@@ -1,0 +1,33 @@
+//На первой ферме имеется 1000 овец. 
+//Ежедневно количество овец на первой ферме увеличивается на 1%. 
+//Если в конце месяца на первой ферме количество овец превышает 50 000,
+//то 10% овец переводят на вторую ферму. 
+//Через какое время количество овец на второй ферме достигнет численности 
+//35 000? (Считать, что в месяце 30 рабочих дней.)
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void main()
+{
+	int sheep = 1000, sheep2 = 0;
+	int day = 0, month = 0;
+
+	while (sheep2 < 35000)
+	{
+		for (int day = 1; day <=30; day++)
+			sheep += sheep / 100;
+
+		if (sheep > 50000)
+		{
+			sheep2 += 10 * sheep / 100;
+			sheep -= 10 * sheep / 100;
+		}
+		month++;
+	}
+
+	cout << "In the end of " << month << " month the number of sheep on the second farm reached " << sheep2 << endl;
+
+	system ("pause");
+}
